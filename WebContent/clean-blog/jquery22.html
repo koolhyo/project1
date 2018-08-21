@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+label {
+   color: blue;
+   display: inline-block;
+   width: 70px;
+   margin: 50;
+}
+input[type="radio"]+label {
+   color: black;
+   display: inline;
+   width: auto;
+   margin: 0;
+}
+#address+br+label {
+   text-align: center;
+   width: 410px;
+   margin-bottom: 0;
+}
+fieldset {
+   padding: 50 0 70 50;
+   width: 530px;
+   margin: auto;
+   margin-top: 50px;
+}
+input {
+   border: 1px solid green;
+   border-radius: 5px;
+   height: 25px;
+}
+textarea {
+   border: 1px solid green;
+   border-radius: 5px;
+   padding: 10px;
+   width: 410px;
+}
+input[type='submit'] {
+   border: 0;
+   border-radius: 5px;
+   background-color: green;
+   color: white;
+   font-size: 15px;
+   width: 203px;
+   height: 35px;
+   margin-top: 15px;
+}
+input[type='reset'] {
+   border: 0;
+   border-radius: 5px;
+   background-color: red;
+   color: white;
+   font-size: 15px;
+   width: 203px;
+   height: 35px;
+}
+input[type='button'] {
+   background-color: orange;
+   color: white;
+   border: 0;
+   border-radius: 5px;
+   height: 25px;
+   line-height: 20px;
+}
+
+#post1, #post2 {
+   width: 127px;
+}
+
+#jumin1, #jumin2 {
+   width: 156px;
+}
+
+#email, #domain {
+   width: 112px;
+}
+
+select {
+   border: 1px solid green;
+   background-color: white;
+   height: 20px;
+}
+
+#id {
+   width: 259px;
+}
+
+#pass, #address {
+   width: 326px;
+}
+
+span {
+   border: 1px solid green;
+   border-radius: 5px;
+   display: inline-block;
+   width: 324px;
+   height: 30px;
+   text-align: center;
+   margin-top: 10px;
+}
+label:last {text-align: center; }
+</style>
+<script>
+      //회원가입 버튼 클릭했을 경우
+      function check() {
+         //id 공백 유효성 검사
+         var id = document.getElementById("id");
+         if (id.value == "") {
+            alert("ID 입력하라");
+            id.focus();
+            return false
+         }
+         var pw = document.getElementById("pass");
+         if (pw.value == "") {
+            alert("비번 입력하라");
+            pw.focus();
+            return false
+         }
+         var jumin1 = document.getElementById("jumin1")
+         if (jumin1.value == "") {
+            alert("주민번호 입력하라");
+            jumin1.focus();
+            return false
+         }
+         var jumin2 = document.getElementById("jumin2");
+         if (jumin2.value == "") {
+            alert("주민번호 입력하라");
+            jumin2.focus();
+            return false
+         }
+         var email = document.getElementById("email");
+         if (email.value == "") {
+            alert("이메일 입력하라");
+            email.focus();
+            return false
+         }
+
+         var domain = document.getElementById("domain");
+         if (domain.value == "") {
+            alert("도메인 입력하라");
+            domain.focus();
+            return false
+         }
+      
+         var gender1=document.getElementById('gender1');
+         var gender2=document.getElementById('gender2');
+           if(gender1.cheked==false && gender2.checked==false){
+              {alert("남, 여중에서 1개를 선택하세요")
+              return false;
+            }
+            if (radio == null) {
+            alert("성별 입력하라")
+            return false;
+            }
+      
+         var hobby_check = document.getElementsByName('hobby');
+         var hobby = 0;
+         for (var a = 0; a < hobby_check.length; a++) {
+            if (hobby_check[a].checked == true) {
+               hobby = hobby+1;
+            }
+         }
+         if (hobby <2) {
+            alert("취미 두개 이상 선택하라");
+            return false;
+         }
+ 
+         var post1 = document.getElementById("post1");
+         if (post1.value == "") {
+            alert("우편번호 입력하라");
+            post1.focus();
+            return false
+         }
+         var post2 = document.getElementById("post2");
+         if (post2.value == "") {
+            alert("우편번호 입력하라");
+            post2.focus();
+            return false
+         }
+         var address = document.getElementById("address");
+         if (address.value == "") {
+            alert("주소 입력하라");
+            address.focus();
+            return false
+         }
+         var intro = document.getElementById("intro");
+         if (intro.value == "") {
+            alert("자기소개 입력하라");
+            intro.focus();
+            return false
+         }
+      }
+
+      function idcheck() {
+         var id_check = document.getElementById('id');
+         if (id_check.value == "") {
+            alert("ID를 입력하세요");
+            id.focus();
+         } else { //ID를 입력했을 경우
+            window.open("welcome.js", "ID중복검사", "width=300, height=250");
+         }
+      }
+      function move() {
+         var jumin1=document.getElementById('jumin1');
+         var jumin2=document.getElementById('jumin2');
+         
+         //주민번호 앞자리 6자리인 경우
+         if(jumin1.value.length == 6){    //6자리인 경우
+            if(!isNaN(jumin1.value))   //6자리가 숫자인 경우
+               jumin2.focus();
+            }else {                  //6자리가 숫자가 아닌 경우
+               alert("숫자로 입력하세요");   //앞자리 모두 초기화
+               jumin1.value='';      //앞자리에 포커스 준다
+            }
+         if(jumin2.value.length == 7){   //주민번호 뒷자리 7자리인 경우    
+            if(!isNaN(jumin2.value)){   //7자리인 경우
+               alert("숫자로 입력하세요");
+               jumin2.value='';
+               jumin2.focus();
+            }
+         }
+      }
+
+   function domain1() {
+      var sel=document.getElementById("sel");
+      var domain=document.getElementById("domain");
+      if(sel.value==""){
+         domain.readOnly=false;
+         domain.value="";
+         domain.focus();
+      } else {                  //option 중에서 선택한 경우
+         domain.readOnly=true;      //수정 불가
+         domain.value = sel.value;
+      }
+   }
+   function post(){
+      window.open("welcome.js", "post", "width=400, height=300");
+   }
+   
+   
+      
+</script>
+</head>
+<body>
+   <fieldset>
+      <legend>유효성 검사</legend>
+      <form id="myform" name="myform" method="get" action="welcome.js"
+         onsubmit="return check()">
+         <label>ID</label> <input type=text size=10 name=id id=id> 
+         <input type=button value="ID중복검사" onClick="idcheck()"><br><br> 
+         <label>비밀번호</label>
+         <input type=password name=pass id=pass><br><br>
+         <label>주민번호</label>
+         <!-- 주민번호 앞자리 -->
+         <input type=text size=6 maxlength=6 name=jumin1 id=jumin1 onKeyup="move()">
+         <!-- 주민번호 뒷자리 -->
+         <input type=text size=7 maxlength=7 name=jumin2 id=jumin2 onKeyup="move()"><br><br>
+            <label>E-Mail</label> 
+            <input type=text name=email id=email>&nbsp;@ 
+            <input type=text name=domain id=domain> 
+            <select name=sel id=sel onChange="domain1()">
+            <option value="">직접입력</option>
+            <option value="naver.com">naver.com</option>
+            <option value="daum.net">daum.net</option>
+            <option value="nate.com">nate.com</option>
+            <option value="gmail.com">gmail.com</option>
+         </select><br><br>
+            <label>성별</label> 
+            <input type=radio name=gendervalue=m id=gender1> 남자
+            <input type=radio name=gender value=f id=gender2> 여자<br><br> 
+            
+            <label>취미</label> 
+            <input type=checkbox name=hobby id=hobby1 value="공부">공부
+            <input type=checkbox name=hobby id=hobby2 value="게임">게임
+            <input type=checkbox name=hobby id=hobby3 value="운동">운동 
+            <input type=checkbox name=hobby id=hobby4 value="등산">등산 
+            <input type=checkbox name=hobby id=hobby5 value="낚시">낚시<br><br> 
+            <label>우편번호</label> 
+            <input type=text size=3 maxlength=3 name=post1 id=post1> - 
+            <input type=text size=3 maxlength=3 name=post2 id=post2> 
+            <input type=button value="우편검색" onClick="post()"> <br><br> 
+            <label>주소</label> 
+            <input type=text size=50 name=address id=address><br> 
+            <label>자기소개</label>
+            <textarea rows=10 cols=75 name=intro id=intro></textarea><br> 
+            <input type=submit value="회원가입"> 
+            <input type=reset value="취소">
+
+      </form>
+   </fieldset>
+</body>
+</html>
